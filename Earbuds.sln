@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2807DE42-1E7C-4389-808F-A296C313689F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earbuds.Core", "src\Earbuds.Core\Earbuds.Core.csproj", "{049F0696-E8B8-42B5-B896-DA59B5F88B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earbuds.Windows", "src\Earbuds.Windows\Earbuds.Windows.csproj", "{42AF914D-D1C4-445B-81C3-B9310C64AE77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FC8906EA-C2F4-42AD-A1B6-09B49E1734DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earbuds.Core.Tests", "tests\Earbuds.Core.Tests\Earbuds.Core.Tests.csproj", "{E48D3245-EB2F-4E12-B66E-B82815B7B04A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earbuds.Presentation", "src\Earbuds.Presentation\Earbuds.Presentation.csproj", "{84B61F20-9C0C-4AF4-A22F-34DAE4C54ABA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earbuds.Presentation.Tests", "tests\Earbuds.Presentation.Tests\Earbuds.Presentation.Tests.csproj", "{F3179EBF-8279-404B-B288-0DA6DB0C2531}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earbuds.App", "src\Earbuds.App\Earbuds.App.csproj", "{F1CA6832-67B2-4DBF-913F-3464E6E967C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{049F0696-E8B8-42B5-B896-DA59B5F88B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049F0696-E8B8-42B5-B896-DA59B5F88B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049F0696-E8B8-42B5-B896-DA59B5F88B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049F0696-E8B8-42B5-B896-DA59B5F88B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42AF914D-D1C4-445B-81C3-B9310C64AE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42AF914D-D1C4-445B-81C3-B9310C64AE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42AF914D-D1C4-445B-81C3-B9310C64AE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42AF914D-D1C4-445B-81C3-B9310C64AE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48D3245-EB2F-4E12-B66E-B82815B7B04A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48D3245-EB2F-4E12-B66E-B82815B7B04A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48D3245-EB2F-4E12-B66E-B82815B7B04A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48D3245-EB2F-4E12-B66E-B82815B7B04A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84B61F20-9C0C-4AF4-A22F-34DAE4C54ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B61F20-9C0C-4AF4-A22F-34DAE4C54ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B61F20-9C0C-4AF4-A22F-34DAE4C54ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B61F20-9C0C-4AF4-A22F-34DAE4C54ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3179EBF-8279-404B-B288-0DA6DB0C2531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3179EBF-8279-404B-B288-0DA6DB0C2531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3179EBF-8279-404B-B288-0DA6DB0C2531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3179EBF-8279-404B-B288-0DA6DB0C2531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1CA6832-67B2-4DBF-913F-3464E6E967C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CA6832-67B2-4DBF-913F-3464E6E967C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CA6832-67B2-4DBF-913F-3464E6E967C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CA6832-67B2-4DBF-913F-3464E6E967C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{049F0696-E8B8-42B5-B896-DA59B5F88B60} = {2807DE42-1E7C-4389-808F-A296C313689F}
+		{42AF914D-D1C4-445B-81C3-B9310C64AE77} = {2807DE42-1E7C-4389-808F-A296C313689F}
+		{E48D3245-EB2F-4E12-B66E-B82815B7B04A} = {FC8906EA-C2F4-42AD-A1B6-09B49E1734DC}
+		{84B61F20-9C0C-4AF4-A22F-34DAE4C54ABA} = {2807DE42-1E7C-4389-808F-A296C313689F}
+		{F3179EBF-8279-404B-B288-0DA6DB0C2531} = {FC8906EA-C2F4-42AD-A1B6-09B49E1734DC}
+		{F1CA6832-67B2-4DBF-913F-3464E6E967C1} = {2807DE42-1E7C-4389-808F-A296C313689F}
+	EndGlobalSection
+EndGlobal

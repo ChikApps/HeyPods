@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- The WPF app: tray icon, popup, main window, wizard, settings, about. Runs on Windows 10 2004+ / 11, x64.
+       Builds on Linux with EnableWindowsTargeting (XAML is compiled), but it only RUNS on Windows. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Earbuds.App</RootNamespace>
+    <!-- The exe name: publish.sh / publish.cmd pass -p:AppExeName=<AppInfo.Name> (HeyPods.exe). -->
+    <AssemblyName>Earbuds.App</AssemblyName>
+    <AssemblyName Condition="'$(AppExeName)' != ''">$(AppExeName)</AssemblyName>
+    <Version>0.9.0</Version>
+    <Product>HeyPods</Product>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- LibraryImport (source-generated P/Invoke) needs this; no hand-written unsafe code. -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- NETSDK1074: on Linux the SDK cannot put the icon into the exe header (Windows-only step). Not an error. -->
+    <NoWarn>$(NoWarn);NETSDK1074</NoWarn>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- MIT. Tray icon (Shell_NotifyIcon) for WPF. https://github.com/HavenDV/H.NotifyIcon -->
+    <PackageReference Include="H.NotifyIcon.Wpf" Version="2.3.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Earbuds.Core\Earbuds.Core.csproj" />
+    <ProjectReference Include="..\Earbuds.Windows\Earbuds.Windows.csproj" />
+    <ProjectReference Include="..\Earbuds.Presentation\Earbuds.Presentation.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+    <EmbeddedResource Include="..\..\LICENSE" LogicalName="LICENSE.txt" />
+    <EmbeddedResource Include="..\..\THIRD_PARTY_NOTICES.md" LogicalName="THIRD_PARTY_NOTICES.md" />
+  </ItemGroup>
+</Project>

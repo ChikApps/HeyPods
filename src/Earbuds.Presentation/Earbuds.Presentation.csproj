@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- UI logic without WPF: texts, formatting, what each window shows, ring math, placement math.
+       Plain net8.0 so it is unit-tested on any OS (the WPF layer itself only runs on Windows). -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Earbuds.Presentation</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Earbuds.Core\Earbuds.Core.csproj" />
+  </ItemGroup>
+</Project>
