@@ -156,7 +156,7 @@ public sealed class SettingsWindow : AppWindow
         }
 
         dock.Children.Add(info);
-        return new Border { Style = Ui.Res<Style>("Card"), Child = dock };
+        return new Border { Style = Ui.Res<Style>("CardBox"), Child = dock };
     }
 
     private Border Mine(AppSettings s)
@@ -204,6 +204,6 @@ public sealed class SettingsWindow : AppWindow
         }
 
         stack.Children.Add(buttons);
-        return new Border { Style = Ui.Res<Style>("Card"), Child = stack };
+        return new Border { Style = Ui.Res<Style>("CardBox"), Child = stack };
     }
 }

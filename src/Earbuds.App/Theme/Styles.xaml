@@ -218,7 +218,8 @@
     </Setter>
   </Style>
 
-  <Style x:Key="Card" TargetType="Border">
+  <!-- named CardBox, not "Card": "Card" is the card BRUSH (ThemeManager). Same key = the Style won (0.9.1 wizard bug). -->
+  <Style x:Key="CardBox" TargetType="Border">
     <Setter Property="Background" Value="{DynamicResource Card}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource CardStroke}"/>
     <Setter Property="BorderThickness" Value="1"/>

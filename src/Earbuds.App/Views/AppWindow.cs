@@ -23,12 +23,32 @@ public class AppWindow : Window
     private readonly Border _footer;
     private readonly Grid _overlay = new() { Visibility = Visibility.Collapsed };
 
-    protected AppWindow(string title, bool minimize = true, double width = 480)
+    /// <summary>Smallest height of a regular window: title bar + some content + the button bar.</summary>
+    public const double DefaultMinHeight = 260;
+
+    /// <param name="height">A fixed height (the wizard: its steps differ in height, the window must not jump or
+    /// shrink). Null = grow with the content, never below <see cref="DefaultMinHeight"/>.</param>
+    protected AppWindow(string title, bool minimize = true, double width = 480, double? height = null)
     {
         Title = title;
+
+        // The size never depends on the content alone: in 0.9.1 the content failed while the window was being
+        // shown, and with SizeToContent and no minimum the window stayed a 160 px strip with only its title.
         Width = width;
-        SizeToContent = SizeToContent.Height;
+        MinWidth = width;
         MaxHeight = Math.Max(400, SystemParameters.WorkArea.Height * 0.94);
+        if (height is { } h)
+        {
+            SizeToContent = SizeToContent.Manual;
+            Height = Math.Min(h, MaxHeight);
+            MinHeight = Height;
+        }
+        else
+        {
+            SizeToContent = SizeToContent.Height;
+            MinHeight = DefaultMinHeight;
+        }
+
         ResizeMode = minimize ? ResizeMode.CanMinimize : ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         FlowDirection = FlowDirection.RightToLeft;

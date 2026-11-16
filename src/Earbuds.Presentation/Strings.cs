@@ -11,6 +11,10 @@ public static class S
 {
     private const string N = AppInfo.Name;
 
+    // ---- 0. start-up failure (shown once, the folder with the log opens next to it) ----
+    public const string StartupFailed = N + " נתקל בתקלה בהפעלה. אפשר לשלוח את הקובץ שנפתח לצוות.";   // TEMP
+    public const string RuntimeFailed = "משהו לא עבד כמו שצריך. אפשר לשלוח את הקובץ שנפתח לצוות.";       // TEMP (2026-11-15)
+
     // ---- 1. near the clock (tray) ----
     public const string TrayTooltip = "שמאל {0} · ימין {1} · קופסה {2}";              // tray.tooltip
     public const string TrayTooltipCharging = "{0} בטעינה";                              // tray.tooltip.charging

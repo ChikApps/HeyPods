@@ -17,7 +17,7 @@ public static class AppInfo
     /// <summary>Subtitle under the name in About (2026-11-14). Nominative use; the About page says AirPods is Apple's trademark.</summary>
     public const string Subtitle = "for AirPods";
 
-    public const string Version = "0.9.0";
+    public const string Version = "0.9.2";
 
     public const string Publisher = "ChikApps";
 

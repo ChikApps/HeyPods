@@ -75,8 +75,10 @@ def argb(rgb, alpha):
 # ---------- path data ----------
 NUM = r'[-+]?(?:\d*\.\d+|\d+\.?)(?:[eE][-+]?\d+)?'
 def normalize_path(d):
-    """Re-prints SVG path data with explicit separators (arc flags may be glued in SVG) and a Nonzero fill rule
-    (WPF's mini-language defaults to EvenOdd, SVG to nonzero)."""
+    """Re-prints SVG path data with explicit separators (arc flags may be glued in SVG).
+    NO "F1" prefix: PathGeometry.Figures uses PathFigureCollection.Parse, whose parser rejects "F" (FormatException at
+    load time = "Provide value on TypeConverterMarkupExtension threw an exception"). The fill rule (SVG = nonzero,
+    WPF default = EvenOdd) is set with the FillRule attribute, see Conv.geometry."""
     out, pos, cmd, argi = [], 0, None, 0
     ws = re.compile(r'[\s,]*')
     num = re.compile(NUM)
@@ -98,7 +100,7 @@ def normalize_path(d):
         if not m:
             raise ValueError('bad path data near: ' + d[pos:pos + 20])
         out.append(fmt(float(m.group(0)))); pos = m.end(); argi += 1
-    return 'F1 ' + ' '.join(out)
+    return ' '.join(out)
 
 # ---------- text to outlines ----------
 class Glyphs:
@@ -118,7 +120,7 @@ class Glyphs:
             g.draw(TransformPen(pen, (s, 0, 0, -s, cx, y)))
             parts.append(pen.getCommands())
             cx += g.width * s
-        return 'F1 ' + normalize_path(' '.join(parts))[3:]
+        return normalize_path(' '.join(parts))
 
 # ---------- converter ----------
 class Conv:
@@ -174,7 +176,7 @@ class Conv:
         tag = etree.QName(el).localname
         f = lambda n, d='0': float(el.get(n, d))
         if tag == 'path':
-            return '<PathGeometry Figures=%s/>' % quoteattr(normalize_path(el.get('d'))), None
+            return '<PathGeometry FillRule="Nonzero" Figures=%s/>' % quoteattr(normalize_path(el.get('d'))), None
         if tag == 'rect':
             rx = el.get('rx'); ry = el.get('ry', rx)
             rad = '' if rx is None else ' RadiusX="%s" RadiusY="%s"' % (fmt(float(rx)), fmt(float(ry)))
@@ -185,7 +187,7 @@ class Conv:
             return '<EllipseGeometry Center="%s,%s" RadiusX="%s" RadiusY="%s"/>' % (fmt(f('cx')), fmt(f('cy')), fmt(f('rx')), fmt(f('ry'))), None
         if tag == 'text':
             size = float(el.get('font-size', style.get('font-size', '16')))
-            return '<PathGeometry Figures=%s/>' % quoteattr(self.glyphs.path(el.text or '', f('x'), f('y'), size, el.get('text-anchor', 'start'))), None
+            return '<PathGeometry FillRule="Nonzero" Figures=%s/>' % quoteattr(self.glyphs.path(el.text or '', f('x'), f('y'), size, el.get('text-anchor', 'start'))), None
         raise ValueError('element ' + tag)
 
     def clip_geometry(self, ref):

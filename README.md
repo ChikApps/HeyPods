@@ -15,7 +15,14 @@ A small, free Windows tray app that shows the battery level of your AirPods and 
 - Privacy: no telemetry, no accounts. The only network request is the "Check for update now" button (one HTTPS request to github.com, only when clicked).
 - The interface is currently in Hebrew (right-to-left).
 
-Status: version 0.9.0, test release. The UI has been built and unit-tested (287 tests) but needs more testing on real Windows machines with real AirPods. Noise control (ANC) is not supported.
+Status: version 0.9.2, early release. 317 automated tests (224 engine + 93 interface), and it runs on Windows 10/11 with real AirPods, but it has been tried on only a few PCs so far. Noise control (ANC) is not supported.
+
+## Download
+1. Open the [Releases page](https://github.com/ChikApps/HeyPods/releases) and download `HeyPods-0.9.2-win-x64.zip` (Windows 10/11, 64-bit). A `.sha256` file is attached to check the download.
+2. Right-click the zip, "Extract All", then double-click `HeyPods.exe`. Nothing to install (.NET is included). The first start can take up to half a minute.
+3. The exe is not code-signed yet, so Windows SmartScreen shows a blue "Windows protected your PC" window. Click "More info", then "Run anyway".
+
+To remove: right-click the tray icon, "יציאה" (Exit), then delete `HeyPods.exe`.
 
 ## Build
 Requires the .NET 8 SDK (with the WindowsDesktop workload for the app; the core and tests run on Linux too).
@@ -49,7 +56,14 @@ The protocol knowledge comes from the open-source projects CAPod, AirPodsDesktop
 - פרטיות: בלי איסוף מידע ובלי חשבונות. הפנייה היחידה לרשת היא כפתור "בדוק עדכון עכשיו" (בקשה אחת ל-github.com, רק בלחיצה).
 - הממשק בעברית (מימין לשמאל).
 
-מצב: גרסה 0.9.0, גרסת בדיקה. הממשק נבנה ועבר בדיקות יחידה (287), וצריך עוד בדיקות על מחשבי ווינדוס ואוזניות אמיתיים. סינון רעשים לא נתמך.
+מצב: גרסה 0.9.2, גרסה ראשונית. 317 בדיקות אוטומטיות (224 מנוע + 93 ממשק). עובדת בווינדוס 10/11 עם AirPods אמיתיות, אבל נוסתה עד עכשיו רק על מחשבים מעטים. סינון רעשים לא נתמך.
+
+## הורדה
+1. נכנסים ל[דף ה-Releases](https://github.com/ChikApps/HeyPods/releases) ומורידים את `HeyPods-0.9.2-win-x64.zip` (ווינדוס 10/11, ‏64 ביט). מצורף קובץ `.sha256` לבדיקת ההורדה.
+2. לחיצה ימנית על הזיפ, "חלץ הכל", ואז לחיצה כפולה על `HeyPods.exe`. לא צריך להתקין כלום (‏.NET כלול). בפעם הראשונה זה יכול לקחת עד חצי דקה.
+3. הקובץ עדיין לא חתום דיגיטלית, ולכן ווינדוס מציג חלון כחול "Windows protected your PC" ("Windows הגן על המחשב שלך"). לוחצים "More info" ("מידע נוסף") ואז "Run anyway" ("הפעל בכל זאת").
+
+להסרה: לחיצה ימנית על הסמל ליד השעון, "יציאה", ואז מוחקים את `HeyPods.exe`.
 
 ## בנייה
 נדרש .NET 8 SDK. הפקודות מופיעות למעלה (`dotnet test`, `./publish.sh`).

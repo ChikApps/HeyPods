@@ -77,7 +77,7 @@ public sealed class AboutWindow : AppWindow
         var honest = new TextBlock { TextWrapping = TextWrapping.Wrap, FontSize = 13, LineHeight = 19 };
         honest.Inlines.Add(new System.Windows.Documents.Bold(new System.Windows.Documents.Run(S.AboutHonestLead + " ")));
         honest.Inlines.Add(new System.Windows.Documents.Run(S.AboutHonest));
-        var callout = new Border { Style = Ui.Res<Style>("Card"), MinHeight = 0, Margin = new Thickness(0, 10, 0, 10), Child = honest };
+        var callout = new Border { Style = Ui.Res<Style>("CardBox"), MinHeight = 0, Margin = new Thickness(0, 10, 0, 10), Child = honest };
         body.Children.Add(callout);
 
         body.Children.Add(Ui.Text(S.AboutCreditsHead, "SubHeading"));
@@ -166,7 +166,7 @@ public sealed class AboutWindow : AppWindow
         }
 
         dock.Children.Add(info);
-        _update.Content = new Border { Style = Ui.Res<Style>("Card"), Child = dock };
+        _update.Content = new Border { Style = Ui.Res<Style>("CardBox"), Child = dock };
     }
 
     private static FrameworkElement Circle(string fill, string icon, string? stroke)

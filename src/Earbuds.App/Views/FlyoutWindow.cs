@@ -20,6 +20,12 @@ public class FlyoutWindow : Window
     /// <summary>Transparent margin that holds the shadow.</summary>
     protected const double ShadowMargin = 24;
 
+    /// <summary>Spec: popup and main window 340 wide.</summary>
+    public const double CardWidth = 340;
+
+    /// <summary>Title row (32) + the smallest body (one notice) + bottom bar (40); real content is taller.</summary>
+    public const double CardMinHeight = 160;
+
     private readonly Border _card;
     private readonly Grid _clip;
     private readonly TranslateTransform _rise = new();
@@ -35,6 +41,8 @@ public class FlyoutWindow : Window
         Topmost = true;
         ShowActivated = activate;
         SizeToContent = SizeToContent.WidthAndHeight;
+        MinWidth = CardWidth + 2 * ShadowMargin; // never a strip, even if the content fails (see AppWindow)
+        MinHeight = CardMinHeight + 2 * ShadowMargin;
         WindowStartupLocation = WindowStartupLocation.Manual;
         Left = -10000;
         Top = -10000;
@@ -47,7 +55,8 @@ public class FlyoutWindow : Window
         _clip = new Grid();
         _card = new Border
         {
-            Width = 340,
+            Width = CardWidth,
+            MinHeight = CardMinHeight,
             BorderThickness = new Thickness(1),
             Margin = new Thickness(ShadowMargin),
             Child = _clip,

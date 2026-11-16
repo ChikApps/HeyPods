@@ -26,6 +26,12 @@ public sealed class WizardWindow : AppWindow
     private static readonly TimeSpan CollectFor = TimeSpan.FromSeconds(2.5);
     private static readonly TimeSpan SlowAfter = TimeSpan.FromSeconds(20);
 
+    /// <summary>Design 15-19 (spec: regular windows 480 wide). The tallest step (16, "still searching") is
+    /// 480 x 498; fixed so the window does not jump between steps. A longer list scrolls.</summary>
+    public const double WizardWidth = 480;
+
+    public const double WizardHeight = 520;
+
     private readonly EarbudsMonitor _monitor;
     private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromMilliseconds(500) };
     private DateTime _searchStarted;
@@ -40,7 +46,7 @@ public sealed class WizardWindow : AppWindow
     private string _step = string.Empty;
 
     public WizardWindow(EarbudsMonitor monitor)
-        : base(S.WizTitle, minimize: false)
+        : base(S.WizTitle, minimize: false, width: WizardWidth, height: WizardHeight)
     {
         _monitor = monitor;
         _timer.Tick += (_, _) => Tick();
@@ -355,7 +361,7 @@ public sealed class WizardWindow : AppWindow
         }
         catch (Exception e)
         {
-            ErrorLog.Write("wizard", e);
+            FailureReport.Runtime("wizard", e);
         }
 
         _done = true;
